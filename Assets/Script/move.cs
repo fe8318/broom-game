@@ -19,11 +19,9 @@ public class move : MonoBehaviour {
 	private bool canJump = true;
 	private Coroutine cor_canJump_dead;
 	public string littleRedName;
-	public Animator animator;
 
 	void Start() {
 		rb2d = GetComponent<Rigidbody2D>();
-		animator = GetComponent<Animator>();
 	}
 
 	void Update() {
@@ -74,14 +72,10 @@ public class move : MonoBehaviour {
 
 		//touchGround = Physics2D.OverlapCircle(footPoint.position, 0.15f, LayerMask.GetMask("Ground & Wall") | LayerMask.GetMask("Platform"));
 		if(touchGround == true) {
-			animator.SetBool("jump",false);
-			animator.SetBool("standby",true);
 			canJump = true;
 			if(cor_canJump_dead != null)
 				StopCoroutine(cor_canJump_dead);
 		} else {
-			animator.SetBool("standby",false);
-			animator.SetBool("jump",true);
 			if(cor_canJump_dead == null)
 				cor_canJump_dead = StartCoroutine(canJump_dead());
 		}
@@ -93,8 +87,6 @@ public class move : MonoBehaviour {
 	}
 	private void Jump() {
 		if(Input.GetButtonDown("Jump") && canJump && touchGround) {
-			animator.SetBool("standby",false);
-			animator.SetBool("jump",true);
 			canJump = false;
 			rb2d.AddForce(Vector2.up * jumpForce);
 		}
