@@ -6,6 +6,7 @@ public class move : MonoBehaviour {
 	private Rigidbody2D rb2d;
 	public Rigidbody2D broomRigidBody;
 
+	public Vector2 startingPos;
 	[Range(0,2)]static public int roleID_Now = 0;
 	public float moveSpeed = 8f;
 	public bool facingRight = true;
@@ -35,7 +36,7 @@ public class move : MonoBehaviour {
 	
 	private void Movement() {
 		if(Input.GetKey("r")) {
-			rb2d.position = new Vector2(-1.33f, 1.46f);
+			rb2d.position = startingPos;
 			rb2d.velocity = new Vector2(0f, 0f);
 			broomRigidBody.velocity = new Vector2(0f, 0f);
 			broomRigidBody.angularVelocity = 0f;

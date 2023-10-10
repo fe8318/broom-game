@@ -233,7 +233,7 @@ Transform:
   m_GameObject: {fileID: 353235211}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0864, y: -0.0357, z: 0}
-  m_LocalScale: {x: 2.229415, y: 2.229415, z: 2.229415}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -718,7 +718,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 806788484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.26, y: -0.2, z: 0}
+  m_LocalPosition: {x: -2.42, y: -2.81, z: 0}
   m_LocalScale: {x: 3.800569, y: 2.3948421, z: 1.6129}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1057,7 +1057,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368634669}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.33, y: 1.46, z: -0.2}
+  m_LocalPosition: {x: -8.68, y: -4.43, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1082,7 +1082,7 @@ MonoBehaviour:
   broomRigidBody: {fileID: 1963937963}
   moveSpeed: 8
   facingRight: 1
-  jumpForce: 300
+  jumpForce: 400
   footPoint: {fileID: 271677313}
   footPoint2: {fileID: 720132672}
   touchGround: 1
@@ -1100,7 +1100,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -1604,7 +1604,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1963937956}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3772182, y: 3.187673, z: -0.20000002}
+  m_LocalPosition: {x: -8.727219, y: -2.7023268, z: -0.20000002}
   m_LocalScale: {x: 0.6035, y: 0.6035, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1692,10 +1692,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.25
+  m_Mass: 0.5
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0.3
+  m_AngularDrag: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1716,7 +1716,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: -2.25082}
-  m_ConnectedAnchor: {x: -0.047218204, y: 0.36930323}
+  m_ConnectedAnchor: {x: -0.047218323, y: 0.36930323}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1836,11 +1836,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8613145090580757863, guid: bbe45be15d91712059bc412407fc3219, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.25
+      value: 1.09
       objectReference: {fileID: 0}
     - target: {fileID: 8613145090580757863, guid: bbe45be15d91712059bc412407fc3219, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.18
+      value: -1.28
       objectReference: {fileID: 0}
     - target: {fileID: 8613145090580757863, guid: bbe45be15d91712059bc412407fc3219, type: 3}
       propertyPath: m_LocalPosition.z
