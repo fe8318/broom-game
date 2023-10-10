@@ -20,6 +20,8 @@ public class move : MonoBehaviour {
 	private Coroutine cor_canJump_dead;
 	public string littleRedName;
 
+	public bool alternativeJumpTest;
+
 	void Start() {
 		rb2d = GetComponent<Rigidbody2D>();
 	}
@@ -85,10 +87,16 @@ public class move : MonoBehaviour {
 		yield return new WaitForSeconds(0.1f);
 		canJump = false;
 	}
+
 	private void Jump() {
 		if(Input.GetButtonDown("Jump") && canJump && touchGround) {
 			canJump = false;
-			rb2d.AddForce(Vector2.up * jumpForce);
+			if(alternativeJumpTest) {
+				float jumpAngle = broomRigidBody.rotation/180f*Mathf.PI + Mathf.PI/2;
+				rb2d.AddForce(new Vector2(Mathf.Cos(jumpAngle), Mathf.Sin(jumpAngle)) * jumpForce);
+			} else {
+				rb2d.AddForce(Vector2.up * jumpForce);
+			}
 		}
 	}
 }

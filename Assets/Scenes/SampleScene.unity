@@ -1087,7 +1087,8 @@ MonoBehaviour:
   footPoint2: {fileID: 720132672}
   touchGround: 1
   littleRedName: 
-  --- !u!50 &1368634673
+  alternativeJumpTest: 1
+--- !u!50 &1368634673
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
