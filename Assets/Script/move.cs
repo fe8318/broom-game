@@ -19,11 +19,14 @@ public class move : MonoBehaviour {
 	private bool canJump = true;
 	private Coroutine cor_canJump_dead;
 	public string littleRedName;
+	private bool failed = false;
 
 	public bool alternativeJumpTest;
 
 	void Start() {
 		rb2d = GetComponent<Rigidbody2D>();
+		broomRigidBody.simulated = true;
+		failed = false;
 	}
 
 	void Update() {
@@ -34,16 +37,21 @@ public class move : MonoBehaviour {
 		Movement();
 	}
 	
-	private void Movement() {
+	private void Movement() {		
 		if(Input.GetKey("r")) {
 			rb2d.position = startingPos;
 			rb2d.velocity = new Vector2(0f, 0f);
+			broomRigidBody.simulated = true;
 			broomRigidBody.velocity = new Vector2(0f, 0f);
 			broomRigidBody.angularVelocity = 0f;
 			broomRigidBody.SetRotation(0f);
+			failed = false;
 			return;
 		}
 
+		if(failed)
+			return;
+		
 		if(touchGround) {
 			rb2d.velocity = new Vector2(moveSpeed * Input.GetAxis("Horizontal"), rb2d.velocity.y);
 		} else {
@@ -74,6 +82,11 @@ public class move : MonoBehaviour {
 
 		//touchGround = Physics2D.OverlapCircle(footPoint.position, 0.15f, LayerMask.GetMask("Ground & Wall") | LayerMask.GetMask("Platform"));
 		if(touchGround == true) {
+			if(Mathf.Abs(broomRigidBody.rotation) > 90f) {
+				rb2d.velocity = new Vector2(0f, 0f);
+				broomRigidBody.simulated = false;
+				failed = true;
+			}
 			canJump = true;
 			if(cor_canJump_dead != null)
 				StopCoroutine(cor_canJump_dead);
@@ -89,6 +102,9 @@ public class move : MonoBehaviour {
 	}
 
 	private void Jump() {
+		if(failed)
+			return;
+		
 		if(Input.GetButtonDown("Jump") && canJump && touchGround) {
 			canJump = false;
 			if(alternativeJumpTest) {
