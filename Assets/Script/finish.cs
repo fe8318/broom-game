@@ -19,13 +19,16 @@ public class finish : MonoBehaviour
 			isWin=false;
 			winningSign.SetActive(false);
 		}
+		if (touchingDoor)
+			FinishLevel();
+		/*
 		if(Input.GetKeyDown (KeyCode.F))
 		{
 			Debug.Log("F be pressed");
 			//check for player's collision with game object tagged Dock
 			if (touchingDoor)
 				FinishLevel();
-		}
+		}*/
     }
 
 	void OnTriggerEnter2D(Collider2D other) {

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class move : MonoBehaviour {
 	private Rigidbody2D rb2d;
@@ -61,6 +63,10 @@ public class move : MonoBehaviour {
 
 	private void restart(){
 		if(Input.GetKey("r")) {
+			SceneManager.LoadScene("Scene0");
+		}
+		/*
+		if(Input.GetKey("r")) {
 			Time.timeScale=0;
 			rb2d.position = startingPos;
 			rb2d.velocity = new Vector2(0f, 0f);
@@ -72,6 +78,7 @@ public class move : MonoBehaviour {
 			Time.timeScale=1;
 			return;
 		}
+		*/
 	}
 
 	//讓傾斜的掃帚回正
