@@ -6,15 +6,19 @@ public class finish : MonoBehaviour
 {
 	private bool touchingDoor = false;
 	public GameObject winningSign;
+	public bool isWin = false;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
+		if(Input.GetKey("r")) {
+			isWin=false;
+			winningSign.SetActive(false);
+		}
 		if(Input.GetKeyDown (KeyCode.F))
 		{
 			Debug.Log("F be pressed");
@@ -40,6 +44,7 @@ public class finish : MonoBehaviour
 
 	void FinishLevel() {
 		winningSign.SetActive(true);
-		Time.timeScale=0;
+		isWin = true;
+		//Time.timeScale=0;
 	}
 }

@@ -9,6 +9,7 @@ public class move : MonoBehaviour {
 	public Vector2 startingPos;
 	[Range(0,2)]static public int roleID_Now = 0;
 	public float moveSpeed = 8f;
+	public float torquePower = 6f;
 	public bool facingRight = true;
 
 	[Header("跳躍設定")]
@@ -32,22 +33,15 @@ public class move : MonoBehaviour {
 	void Update() {
 		footPointCheck();
 		Jump();
+		righting();
+		restart();
 	}
 	void FixedUpdate() {
 		Movement();
 	}
 	
 	private void Movement() {		
-		if(Input.GetKey("r")) {
-			rb2d.position = startingPos;
-			rb2d.velocity = new Vector2(0f, 0f);
-			broomRigidBody.simulated = true;
-			broomRigidBody.velocity = new Vector2(0f, 0f);
-			broomRigidBody.angularVelocity = 0f;
-			broomRigidBody.SetRotation(0f);
-			failed = false;
-			return;
-		}
+		
 
 		if(failed)
 			return;
@@ -63,6 +57,42 @@ public class move : MonoBehaviour {
 				Flip();
 			}
 		}
+	}
+
+	private void restart(){
+		if(Input.GetKey("r")) {
+			Time.timeScale=0;
+			rb2d.position = startingPos;
+			rb2d.velocity = new Vector2(0f, 0f);
+			broomRigidBody.simulated = true;
+			broomRigidBody.velocity = new Vector2(0f, 0f);
+			broomRigidBody.angularVelocity = 0f;
+			broomRigidBody.SetRotation(0f);
+			failed = false;
+			Time.timeScale=1;
+			return;
+		}
+	}
+
+	//讓傾斜的掃帚回正
+	private void righting()
+	{
+		if(Input.GetKey("j")) {
+			broomRigidBody.AddTorque(torquePower);
+		}
+		if(Input.GetKey("k")) {
+			broomRigidBody.AddTorque(-1*torquePower);
+		}
+		
+		if(Input.GetKey("i")) {
+			if(broomRigidBody.rotation < 0f){
+				broomRigidBody.AddTorque(torquePower);
+			}
+			else if(broomRigidBody.rotation > 0f){
+				broomRigidBody.AddTorque(-1*torquePower);
+			}
+		}
+
 	}
 
 	private void Flip() {
