@@ -63,7 +63,7 @@ public class move : MonoBehaviour {
 
 	private void restart(){
 		if(Input.GetKey("r")) {
-			SceneManager.LoadScene("Scene0");
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		}
 		/*
 		if(Input.GetKey("r")) {
