@@ -2886,9 +2886,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1200633755}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25151c126d9c5d04ab3555c1cea7f7b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ab7066cbe34e694ba6504a17f225b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InstructionUI: {fileID: 1200633755}
 --- !u!1 &1209103906
 GameObject:
   m_ObjectHideFlags: 0
@@ -4361,7 +4362,6 @@ GameObject:
   - component: {fileID: 1754337809}
   - component: {fileID: 1754337808}
   - component: {fileID: 1754337807}
-  - component: {fileID: 1754337806}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -4390,19 +4390,6 @@ RectTransform:
   m_AnchoredPosition: {x: 6.3975, y: -172}
   m_SizeDelta: {x: 223.205, y: 111}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1754337806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1754337804}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ab7066cbe34e694ba6504a17f225b55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InstructionUI: {fileID: 1200633755}
 --- !u!114 &1754337807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4447,10 +4434,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1754337806}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
+      - m_Target: {fileID: 1200633759}
+        m_TargetAssemblyTypeName: InstructionUIManager, Assembly-CSharp
+        m_MethodName: CloseInstructionUI
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
