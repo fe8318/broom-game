@@ -9,8 +9,8 @@ public class DeathZone : MonoBehaviour
         // 檢查碰到的物體是否是玩家角色（根據需要調整碰撞條件）
         if (other.CompareTag("Player"))
         {
-            // 重新加載當前場景
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            // Notify the player object that it has failed
+            other.GetComponent<move>().failAndRestart();
         }
     }
 }

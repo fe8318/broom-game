@@ -120,9 +120,10 @@ public class move : MonoBehaviour {
 		//touchGround = Physics2D.OverlapCircle(footPoint.position, 0.15f, LayerMask.GetMask("Ground & Wall") | LayerMask.GetMask("Platform"));
 		if(touchGround == true) {
 			if(Mathf.Abs(broomRigidBody.rotation) > 90f) {
-				rb2d.velocity = new Vector2(0f, 0f);
-				broomRigidBody.simulated = false;
-				failed = true;
+				failAndRestart();
+				// rb2d.velocity = new Vector2(0f, 0f);
+				// broomRigidBody.simulated = false;
+				// failed = true;
 			}
 			canJump = true;
 			if(cor_canJump_dead != null)
@@ -151,5 +152,9 @@ public class move : MonoBehaviour {
 				rb2d.AddForce(Vector2.up * jumpForce);
 			}
 		}
+	}
+
+	public void failAndRestart() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 }
