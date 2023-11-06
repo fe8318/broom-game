@@ -668,7 +668,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4719944, y: -2.2991147, z: -10.2}
+  m_LocalPosition: {x: -2.4517384, y: -2.2991147, z: -10.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1799,8 +1799,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u65B9\u5411\u9375\uFF1A\u63A7\u5236\u89D2\u8272\u79FB\u52D5\u65B9\u5411\r\nSPACE
-    \uFF1A\u63A7\u5236\u8DF3\u8E8D\r\nR\uFF1A\u91CD\u555F\u904A\u6232\r\n\r\n\u65CB\u8F49\u63A7\u5236\r\nI\uFF1A\u81EA\u52D5\u4FEE\u6B63\u65CB\u8F49\u65B9\u5411\r\nJ/K\uFF1A\u624B\u52D5\u4FEE\u6B63\u65CB\u8F49\u65B9\u5411\r\n\r\n\u203B\u6211\u5011\u5E0C\u671B\u60A8\u6E2C\u8A66\r\n1:\u4E0D\u4F7F\u7528\u65CB\u8F49\u63A7\u5236\r\n2:\u4F7F\u7528\u81EA\u52D5\u4FEE\u6B63\r\n3:\u4F7F\u7528\u624B\u52D5\u4FEE\u6B63\r\n\u4E09\u7A2E\u72C0\u6CC1\u7684\u904A\u73A9\u9AD4\u9A57"
+  m_text: "Left, Right or J, K\uFF1A\u5DE6\u53F3\u79FB\u52D5\nSPACE \uFF1A\u8DF3\u8E8D\nR
+    or Grave\uFF1A\u91CD\u555F\u904A\u6232\n\n\u65CB\u8F49\u63A7\u5236\uFF1A\nG\uFF1A\u81EA\u52D5\u4FEE\u6B63\u65CB\u8F49\u65B9\u5411\nD,
+    F\uFF1A\u624B\u52D5\u4FEE\u6B63\u65CB\u8F49\u65B9\u5411\n\n\u203B\u6211\u5011\u5E0C\u671B\u60A8\u6E2C\u8A66\n1:\u4E0D\u4F7F\u7528\u65CB\u8F49\u63A7\u5236\n2:\u4F7F\u7528\u81EA\u52D5\u4FEE\u6B63\n3:\u4F7F\u7528\u624B\u52D5\u4FEE\u6B63\n\u4E09\u7A2E\u72C0\u6CC1\u7684\u904A\u73A9\u9AD4\u9A57\n((
+    S\uFF1A\uFF1F\uFF1F\uFF1F"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7a118bf6944c9f44f864d59b4bf7ffaa, type: 2}
   m_sharedMaterial: {fileID: -3328365270580569915, guid: 7a118bf6944c9f44f864d59b4bf7ffaa, type: 2}

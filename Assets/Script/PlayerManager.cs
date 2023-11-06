@@ -82,9 +82,8 @@ public class PlayerManager : MonoBehaviour {
 				break;
 				case WaterZonePhysicsVer.ExponentialDecayToThirdOfFullSpeed:
 				velocity = velocity * 0.95f + Math.Sign(enterWaterVelocity) * moveSpeed * 0.3333f * 0.05f;
-				break;	
+				break;
 			}
-
 		}
 
 		rb2d.velocity = new Vector2(velocity, rb2d.velocity.y);
@@ -97,20 +96,20 @@ public class PlayerManager : MonoBehaviour {
 	}
 
 	private void checkRestart() {
-		if (Input.GetKey("r"))
+		if (Input.GetKey("r") || Input.GetKey("`"))
 			restartScene();
 	}
 
 	//讓傾斜的掃帚回正
 	private void righting() {
-		if (Input.GetKey("j")) {
+		if (Input.GetKey("d")) {
 			broomRigidBody.AddTorque(torquePower);
 		}
-		if (Input.GetKey("k")) {
+		if (Input.GetKey("f")) {
 			broomRigidBody.AddTorque(-1 * torquePower);
 		}
 
-		if (Input.GetKey("i")) {
+		if (Input.GetKey("g")) {
 			if (broomRigidBody.rotation < 0f) {
 				broomRigidBody.AddTorque(torquePower);
 			}
