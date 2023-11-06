@@ -1,8 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum WaterZonePhysicsVer {
+	Constant,
+	ExponentialDecay,
+	ExponentialDecayToHalfOriginal,
+	ExponentialDecayToQuarterFullSpeed,
+}
 
 public class PlayerManager : MonoBehaviour {
 	private Rigidbody2D rb2d;
@@ -24,6 +31,10 @@ public class PlayerManager : MonoBehaviour {
 	public string littleRedName;
 	private bool failed = false;
 	private float velocity = 0f;
+	public WaterZonePhysicsVer waterZonePhysicsVer;
+	private bool touchingWater = false;
+	private float enterWaterVelocity = 0f;
+	private uint enterWaterFrameCount = 0;
 
 	public bool alternativeJumpTest;
 
@@ -49,11 +60,31 @@ public class PlayerManager : MonoBehaviour {
 		if (failed)
 			return;
 
-		if (touchGround) {
-			velocity = moveSpeed * Input.GetAxis("Horizontal");
+		if (!touchingWater) {
+			if (touchGround) {
+				velocity = moveSpeed * Input.GetAxis("Horizontal");
+			}
+			else {
+				velocity = moveSpeed * Input.GetAxis("Horizontal") * 0.85f;
+			}
 		}
 		else {
-			velocity = moveSpeed * Input.GetAxis("Horizontal") * 0.85f;
+			switch (waterZonePhysicsVer) {
+				case WaterZonePhysicsVer.Constant:
+				// WuaterZone v0: velocity stay as a constant in the WatenZone
+				// velocity = velocity;
+				break;
+				case WaterZonePhysicsVer.ExponentialDecay:
+				velocity = velocity * 0.97f;
+				break;
+				case WaterZonePhysicsVer.ExponentialDecayToHalfOriginal:
+				velocity = velocity * 0.95f + enterWaterVelocity * 0.5f * 0.05f;
+				break;
+				case WaterZonePhysicsVer.ExponentialDecayToQuarterFullSpeed:
+				velocity = velocity * 0.95f + Math.Sign(enterWaterVelocity) * moveSpeed * 0.25f * 0.05f;
+				break;	
+			}
+
 		}
 
 		rb2d.velocity = new Vector2(velocity, rb2d.velocity.y);
@@ -158,8 +189,14 @@ public class PlayerManager : MonoBehaviour {
 
 	public void TouchedByWater() {
 		Debug.Log("oh no water");
+		if (!touchingWater) {
+			touchingWater = true;
+			enterWaterVelocity = velocity;
+			enterWaterFrameCount = 0;
+		}
 	}
 	public void NolongerTouchedByWater() {
-		Debug.Log("yeah no water");
+		Debug.Log("yeah super dry");
+		touchingWater = false;
 	}
 }

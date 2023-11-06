@@ -1912,6 +1912,7 @@ MonoBehaviour:
   footPoint2: {fileID: 720132672}
   touchGround: 1
   littleRedName: 
+  waterZonePhysicsVer: 2
   alternativeJumpTest: 1
 --- !u!50 &1368634673
 Rigidbody2D:
