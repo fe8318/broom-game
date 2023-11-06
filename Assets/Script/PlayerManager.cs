@@ -8,7 +8,7 @@ public enum WaterZonePhysicsVer {
 	Constant,
 	ExponentialDecay,
 	ExponentialDecayToHalfOriginal,
-	ExponentialDecayToQuarterFullSpeed,
+	ExponentialDecayToThirdOfFullSpeed,
 }
 
 public class PlayerManager : MonoBehaviour {
@@ -80,8 +80,8 @@ public class PlayerManager : MonoBehaviour {
 				case WaterZonePhysicsVer.ExponentialDecayToHalfOriginal:
 				velocity = velocity * 0.95f + enterWaterVelocity * 0.5f * 0.05f;
 				break;
-				case WaterZonePhysicsVer.ExponentialDecayToQuarterFullSpeed:
-				velocity = velocity * 0.95f + Math.Sign(enterWaterVelocity) * moveSpeed * 0.25f * 0.05f;
+				case WaterZonePhysicsVer.ExponentialDecayToThirdOfFullSpeed:
+				velocity = velocity * 0.95f + Math.Sign(enterWaterVelocity) * moveSpeed * 0.3333f * 0.05f;
 				break;	
 			}
 

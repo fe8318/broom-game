@@ -5,7 +5,7 @@ using PlayerStats;
 public class GameStarter : MonoBehaviour {
     public void StartGame() {
         UIStats.playerSeenInstruction = false;
-        // 使用 SceneManager.LoadScene 來讀取 "LevelTest" 場景
-        SceneManager.LoadScene("LevelTest");
+        // 使用 SceneManager.LoadScene 來讀取 "Level1" 場景
+        SceneManager.LoadScene("Level1");
     }
 }

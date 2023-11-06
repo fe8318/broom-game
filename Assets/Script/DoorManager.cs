@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DoorManager : MonoBehaviour {
 	private bool touchingDoor = false;
 	public GameObject winningSign;
 	public bool isWin = false;
+	public bool isLastLevel;
 	// Start is called before the first frame update
 	void Start() {
 	}
@@ -41,8 +43,11 @@ public class DoorManager : MonoBehaviour {
 	}
 
 	void FinishLevel() {
-		winningSign.SetActive(true);
+		if(!isLastLevel) {
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+		}
 		isWin = true;
-		//Time.timeScale=0;
+		winningSign.SetActive(true);
+		Time.timeScale=0;
 	}
 }
