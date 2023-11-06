@@ -2918,8 +2918,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 2061346129
-  m_SortingLayer: 2
+  m_SortingLayerID: 1249018253
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5a8027978751994e88ecbad3b55ffdac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3343,9 +3343,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2305790502552579499, guid: ec07f2491fe5c096ea4c9dead5b5bf25, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2305790502552579503, guid: ec07f2491fe5c096ea4c9dead5b5bf25, type: 3}
       propertyPath: m_Name
       value: WaterZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305790502552579503, guid: ec07f2491fe5c096ea4c9dead5b5bf25, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305790502552579503, guid: ec07f2491fe5c096ea4c9dead5b5bf25, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec07f2491fe5c096ea4c9dead5b5bf25, type: 3}
