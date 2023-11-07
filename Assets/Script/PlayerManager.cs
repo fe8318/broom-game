@@ -60,12 +60,21 @@ public class PlayerManager : MonoBehaviour {
 		if (failed)
 			return;
 
+		velocity = rb2d.velocity.x;
 		if (!touchingWater) {
 			if (touchGround) {
-				velocity = moveSpeed * Input.GetAxis("Horizontal");
+				if ((Math.Sign(velocity) == Math.Sign(Input.GetAxis("Horizontal"))) || (Input.GetAxis("Horizontal") == 0)) {
+					velocity = Math.Sign(velocity) * Math.Max(Math.Abs(velocity) * 0.87f, Math.Abs(moveSpeed * Input.GetAxis("Horizontal") * 0.85f));
+				}
+				else
+					velocity = moveSpeed * Input.GetAxis("Horizontal");
 			}
 			else {
-				velocity = moveSpeed * Input.GetAxis("Horizontal") * 0.85f;
+				if ((Math.Sign(velocity) == Math.Sign(Input.GetAxis("Horizontal"))) || (Input.GetAxis("Horizontal") == 0)) {
+					velocity = Math.Sign(velocity) * Math.Max(Math.Abs(velocity), Math.Abs(moveSpeed * Input.GetAxis("Horizontal") * 0.85f));
+				}
+				else
+					velocity = moveSpeed * Input.GetAxis("Horizontal") * 0.85f;
 			}
 		}
 		else {
