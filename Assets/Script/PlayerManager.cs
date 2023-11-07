@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using PlayerStats;
+using System.Linq;
+using Unity.VisualScripting;
 
 public enum WaterZonePhysicsVer {
 	Constant,
@@ -37,18 +40,29 @@ public class PlayerManager : MonoBehaviour {
 	private uint enterWaterFrameCount = 0;
 
 	public bool alternativeJumpTest;
+	private bool restartEnabled = false;
 
 	void Start() {
 		rb2d = GetComponent<Rigidbody2D>();
 		broomRigidBody.simulated = true;
 		failed = false;
+		restartEnabled = false;
+		Time.timeScale = 1;
+
+		while (SceneManager.GetActiveScene().buildIndex >= GameStats.startTimeStamps.Count) {
+			GameStats.startTimeStamps.Add(Time.time);
+		}
+		while (SceneManager.GetActiveScene().buildIndex >= GameStats.restartTimeStamps.Count) {
+			GameStats.restartTimeStamps.Add(0);
+		}
+		GameStats.restartTimeStamps[SceneManager.GetActiveScene().buildIndex] = Time.time;
 	}
 
 	void Update() {
+		checkRestart();
 		footPointCheck();
 		Jump();
 		righting();
-		checkRestart();
 	}
 	void FixedUpdate() {
 		Movement();
@@ -105,8 +119,17 @@ public class PlayerManager : MonoBehaviour {
 	}
 
 	private void checkRestart() {
-		if (Input.GetKey("r") || Input.GetKey("`"))
-			restartScene();
+		if (restartEnabled) {
+			if (Input.GetKey("r") || Input.GetKey("`")) {
+				restartEnabled = false;
+				restartScene();
+			}
+		}
+		else {
+			if (Time.timeSinceLevelLoad > 0.2) {
+				restartEnabled = true;
+			}
+		}
 	}
 
 	//讓傾斜的掃帚回正
@@ -188,15 +211,36 @@ public class PlayerManager : MonoBehaviour {
 		// TEST KEY: s = super, grants invincibility
 		if (Input.GetKey("s"))
 			return;
+		GameStats.totalFail++;
+		while (SceneManager.GetActiveScene().buildIndex >= GameStats.levelFail.Count) {
+			GameStats.levelFail.Add(0);
+		}
+		GameStats.levelFail[SceneManager.GetActiveScene().buildIndex] += 1;
 		restartScene();
 	}
 
 	public void restartScene() {
+		GameStats.totalRestart++;
+		while (SceneManager.GetActiveScene().buildIndex >= GameStats.levelRestart.Count) {
+			GameStats.levelRestart.Add(0);
+		}
+		GameStats.levelRestart[SceneManager.GetActiveScene().buildIndex] += 1;
+
+		// string restartData = "Failed " + GameStats.totalFail + " time(s), restarted " + GameStats.totalRestart + " time(s).\n";
+		// // Level0 => menu
+		// for (int i = 1; i < GameStats.levelFail.Count; i++) {
+		// 	restartData += "Failed Level " + i + " " + GameStats.levelFail[i] + " time(s) \n";
+		// }
+		// for (int i = 1; i < GameStats.levelRestart.Count; i++) {
+		// 	restartData += "Restarted Level " + i + " " + GameStats.levelRestart[i] + " time(s) \n";
+		// }
+		// Debug.Log(restartData);
+
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
 	public void TouchedByWater() {
-		Debug.Log("oh no water");
+		// Debug.Log("oh no water");
 		if (!touchingWater) {
 			touchingWater = true;
 			enterWaterVelocity = velocity;
@@ -204,7 +248,7 @@ public class PlayerManager : MonoBehaviour {
 		}
 	}
 	public void NolongerTouchedByWater() {
-		Debug.Log("yeah super dry");
+		// Debug.Log("yeah super dry");
 		touchingWater = false;
 	}
 }
