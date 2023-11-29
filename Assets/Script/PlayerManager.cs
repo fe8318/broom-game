@@ -17,6 +17,7 @@ public enum WaterZonePhysicsVer {
 public class PlayerManager : MonoBehaviour {
 	private Rigidbody2D rb2d;
 	public Rigidbody2D broomRigidBody;
+	public GameObject particleSystemForChar;
 
 	public Vector2 startingPos;
 	[Range(0, 2)] static public int roleID_Now = 0;
@@ -66,6 +67,7 @@ public class PlayerManager : MonoBehaviour {
 	}
 	void FixedUpdate() {
 		Movement();
+		particles();
 	}
 
 	private void Movement() {
@@ -115,6 +117,15 @@ public class PlayerManager : MonoBehaviour {
 			if (!(facingRight ^ (Input.GetAxis("Horizontal") < 0f))) {
 				Flip();
 			}
+		}
+	}
+
+	private void particles(){
+		if (Mathf.Abs(broomRigidBody.rotation) > 30f){
+			particleSystemForChar.SetActive(true);
+		}
+		else{
+			particleSystemForChar.SetActive(false);
 		}
 	}
 
