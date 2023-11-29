@@ -310,7 +310,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 300681893}
-        m_TargetAssemblyTypeName: startGame, Assembly-CSharp
+        m_TargetAssemblyTypeName: GameStarter, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
