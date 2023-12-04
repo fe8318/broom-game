@@ -35,12 +35,18 @@ public class PlayerManager : MonoBehaviour {
 	public string littleRedName;
 	private bool failed = false;
 	private float velocity = 0f;
+	public bool alternativeJumpTest;
+
+	[Header("水坑設定")]
+
 	public WaterZonePhysicsVer waterZonePhysicsVer;
+	public Sprite normalShoeSprite;
+	public Sprite waterZoneShoeSprite;
+	
 	private bool touchingWater = false;
 	private float enterWaterVelocity = 0f;
 	private uint enterWaterFrameCount = 0;
 
-	public bool alternativeJumpTest;
 	private bool restartEnabled = false;
 
 	void Start() {
@@ -257,9 +263,11 @@ public class PlayerManager : MonoBehaviour {
 			enterWaterVelocity = velocity;
 			enterWaterFrameCount = 0;
 		}
+		this.GetComponent<SpriteRenderer>().sprite = waterZoneShoeSprite;
 	}
 	public void NolongerTouchedByWater() {
 		// Debug.Log("yeah super dry");
 		touchingWater = false;
+		this.GetComponent<SpriteRenderer>().sprite = normalShoeSprite;
 	}
 }
