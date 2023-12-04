@@ -8,6 +8,7 @@ public class DeathZone : MonoBehaviour {
         if (other.CompareTag("Player")) {
             // Notify the player object that it has failed
             other.GetComponent<PlayerManager>().failAndRestart();
+            Debug.Log("fail");
         }
     }
 }

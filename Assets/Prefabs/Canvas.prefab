@@ -149,13 +149,14 @@ GameObject:
   - component: {fileID: 4900980862925544257}
   - component: {fileID: 6780079394809926256}
   - component: {fileID: 6777855913114378393}
+  - component: {fileID: 5114075360209598064}
   m_Layer: 5
   m_Name: pausePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8781980418324831574
 RectTransform:
   m_ObjectHideFlags: 0
@@ -229,6 +230,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InstructionUI: {fileID: 392776147999952798}
+--- !u!114 &5114075360209598064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392776147999952798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0b6c44d5e0b7940b5c2ac53dc9fa65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3778583618692770276
 GameObject:
   m_ObjectHideFlags: 0

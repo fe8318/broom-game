@@ -229,8 +229,8 @@ public class PlayerManager : MonoBehaviour {
 			GameStats.levelFail.Add(0);
 		}
 		GameStats.levelFail[SceneManager.GetActiveScene().buildIndex] += 1;
-		//Time.timeScale = 0;
 		pausePanel.SetActive(true);
+		Time.timeScale = 0;
 		hasReadyRestart();
 	}
 
