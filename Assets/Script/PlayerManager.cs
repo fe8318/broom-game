@@ -18,6 +18,8 @@ public class PlayerManager : MonoBehaviour {
 	private Rigidbody2D rb2d;
 	public Rigidbody2D broomRigidBody;
 	public GameObject particleSystemForChar;
+	public GameObject particleSystem2ForChar;
+	public GameObject pausePanel; // 指向UI元素的引用
 
 	public Vector2 startingPos;
 	[Range(0, 2)] static public int roleID_Now = 0;
@@ -227,7 +229,16 @@ public class PlayerManager : MonoBehaviour {
 			GameStats.levelFail.Add(0);
 		}
 		GameStats.levelFail[SceneManager.GetActiveScene().buildIndex] += 1;
-		restartScene();
+		//Time.timeScale = 0;
+		pausePanel.SetActive(true);
+		hasReadyRestart();
+	}
+
+	public void hasReadyRestart(){
+		if(Input.GetKey("y")){
+			pausePanel.SetActive(false);
+			restartScene();
+		}
 	}
 
 	public void restartScene() {
