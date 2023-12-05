@@ -71,12 +71,12 @@ public class PlayerManager : MonoBehaviour {
 
 	void Update() {
 		checkRestart();
-		footPointCheck();
 		Jump();
 		righting();
 	}
 	void FixedUpdate() {
 		Movement();
+		checkDeath();
 		particles();
 	}
 
@@ -197,12 +197,6 @@ public class PlayerManager : MonoBehaviour {
 
 		//touchGround = Physics2D.OverlapCircle(footPoint.position, 0.15f, LayerMask.GetMask("Ground & Wall") | LayerMask.GetMask("Platform"));
 		if (touchGround == true) {
-			if (Mathf.Abs(broomRigidBody.rotation) > 90f) {
-				failAndRestart();
-				// rb2d.velocity = new Vector2(0f, 0f);
-				// broomRigidBody.simulated = false;
-				// failed = true;
-			}
 			canJump = true;
 			if (cor_canJump_dead != null)
 				StopCoroutine(cor_canJump_dead);
@@ -213,12 +207,19 @@ public class PlayerManager : MonoBehaviour {
 		}
 	}
 
+	private void checkDeath() {
+		footPointCheck();
+		if (touchGround && Mathf.Abs(broomRigidBody.rotation) > 90f)
+			failAndStop();
+	}
+
 	private IEnumerator canJump_dead() {
 		yield return new WaitForSeconds(0.1f);
 		canJump = false;
 	}
 
 	private void Jump() {
+		footPointCheck();
 		if (failed)
 			return;
 
@@ -234,7 +235,8 @@ public class PlayerManager : MonoBehaviour {
 		}
 	}
 
-	public void failAndRestart() {
+	public void failAndStop() {
+		Debug.Log("Player fail detected!");
 		// TEST KEY: s = super, grants invincibility
 		if (Input.GetKey("s"))
 			return;
@@ -245,14 +247,7 @@ public class PlayerManager : MonoBehaviour {
 		GameStats.levelFail[SceneManager.GetActiveScene().buildIndex] += 1;
 		pausePanel.SetActive(true);
 		Time.timeScale = 0;
-		hasReadyRestart();
-	}
-
-	public void hasReadyRestart(){
-		if(Input.GetKey("y")){
-			pausePanel.SetActive(false);
-			restartScene();
-		}
+		Debug.Log("Player fail finished!");
 	}
 
 	public void restartScene() {

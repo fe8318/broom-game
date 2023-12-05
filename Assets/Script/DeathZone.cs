@@ -7,7 +7,7 @@ public class DeathZone : MonoBehaviour {
         // 檢查碰到的物體是否是玩家角色（根據需要調整碰撞條件）
         if (other.CompareTag("Player")) {
             // Notify the player object that it has failed
-            other.GetComponent<PlayerManager>().failAndRestart();
+            other.GetComponent<PlayerManager>().failAndStop();
             Debug.Log("fail");
         }
     }
