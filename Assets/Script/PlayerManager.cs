@@ -17,7 +17,9 @@ public enum WaterZonePhysicsVer {
 public class PlayerManager : MonoBehaviour {
 	private Rigidbody2D rb2d;
 	public Rigidbody2D broomRigidBody;
-	public GameObject particleSystemForChar;
+	public GameObject fallingLeftParticleSystem;
+	public GameObject fallingRightParticleSystem;
+
 
 	public Vector2 startingPos;
 	[Range(0, 2)] static public int roleID_Now = 0;
@@ -42,7 +44,7 @@ public class PlayerManager : MonoBehaviour {
 	public WaterZonePhysicsVer waterZonePhysicsVer;
 	public Sprite normalShoeSprite;
 	public Sprite waterZoneShoeSprite;
-	
+
 	private bool touchingWater = false;
 	private float enterWaterVelocity = 0f;
 	private uint enterWaterFrameCount = 0;
@@ -126,12 +128,18 @@ public class PlayerManager : MonoBehaviour {
 		}
 	}
 
-	private void particles(){
-		if (Mathf.Abs(broomRigidBody.rotation) > 30f){
-			particleSystemForChar.SetActive(true);
+	private void particles() {
+		if (broomRigidBody.rotation < -30f) {
+			fallingRightParticleSystem.SetActive(true);
+			fallingLeftParticleSystem.SetActive(false);
 		}
-		else{
-			particleSystemForChar.SetActive(false);
+		else if (broomRigidBody.rotation > 30f) {
+			fallingRightParticleSystem.SetActive(false);
+			fallingLeftParticleSystem.SetActive(true);
+		}
+		else {
+			fallingRightParticleSystem.SetActive(false);
+			fallingLeftParticleSystem.SetActive(false);
 		}
 	}
 
