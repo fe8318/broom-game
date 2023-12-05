@@ -116,8 +116,10 @@ MonoBehaviour:
   footPoint2: {fileID: 3339512146766798081}
   touchGround: 1
   littleRedName: 
-  waterZonePhysicsVer: 3
   alternativeJumpTest: 1
+  waterZonePhysicsVer: 3
+  normalShoeSprite: {fileID: 21300000, guid: 5c99eae8db21a4b429f73e43419f6d95, type: 3}
+  waterZoneShoeSprite: {fileID: 21300000, guid: 522db0b1a1b16bf938a118a0b753013f, type: 3}
 --- !u!50 &2960129012067039952
 Rigidbody2D:
   serializedVersion: 4
