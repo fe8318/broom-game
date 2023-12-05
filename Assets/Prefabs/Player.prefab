@@ -14815,6 +14815,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8789481332631190440}
   - component: {fileID: 8588367599818700413}
+  - component: {fileID: 579863671226880946}
   m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
@@ -14844,7 +14845,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6495405112171261179}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -14863,6 +14864,39 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.52758, y: 6.4}
   m_EdgeRadius: 0
+--- !u!60 &579863671226880946
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6495405112171261179}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.27729243, y: 2.9833937}
+      - {x: 0.08258621, y: 2.9682083}
+      - {x: -0.19079356, y: 2.9119854}
+      - {x: -0.41253477, y: 2.8193235}
+      - {x: -0.4286511, y: 2.5308573}
+      - {x: -0.15549655, y: -2.4197226}
+      - {x: 0.03153501, y: -2.5501018}
+      - {x: 0.20085624, y: -2.3428006}
 --- !u!1 &7295135346209537423
 GameObject:
   m_ObjectHideFlags: 0
